@@ -217,6 +217,8 @@ def run(indir: Directory, outdir: Directory, max_score: int, args: List[str]) ->
     pytest.main(['-s'] + _sanitize_args(args or []) + [str(tf) for tf in test_files], plugins=[reporter])
     # dump the report
     out_file.write_text(reporter.results.as_json())
+    print('#####################################')
+    print(reporter.results.as_json())
     # remove cache directories
     for cache_dir in ['.pytest_cache', '__pycache__']:
         dirpath = indir / cache_dir
